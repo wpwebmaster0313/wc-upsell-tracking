@@ -5,5 +5,3 @@
 
 16 June 2022
 - Added discount percentage inputs for Single Product Upsells tracking, Cart Addons tracking, Checkout Addons tracking and Checkout Popups tracking items. If items present in session data and discount defined under tracking items, discount will be applied to item in cart/during checkout.
-
-19 June 2022
