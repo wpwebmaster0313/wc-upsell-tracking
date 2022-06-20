@@ -34,7 +34,7 @@ function upsell_v2_product_single_product_info_modal($upsell_id) {
             </div>
 
             <!-- images -->
-            <div class="upsell-v2-product-single-product-data-modal-images-cont small-12 medium-6">
+            <div class="upsell-v2-product-single-product-data-modal-images-cont small-12 medium-6 w-50">
                 <div class="row">
 
                     <?php
@@ -72,7 +72,7 @@ function upsell_v2_product_single_product_info_modal($upsell_id) {
             </div>
 
             <!-- description -->
-            <div class="upsell-v2-product-single-product-data-modal-description-cont small-12 medium-6">
+            <div class="upsell-v2-product-single-product-data-modal-description-cont small-12 medium-6 w-50">
                 <?php echo $short_descr; ?>
             </div>
 

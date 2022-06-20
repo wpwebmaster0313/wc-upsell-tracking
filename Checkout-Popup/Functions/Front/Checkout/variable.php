@@ -96,7 +96,7 @@ function upsell_v2_checkout_popup_render_variable_prod($prod_id, $tracking_id, $
                         <div class="row">
 
                             <!-- product image -->
-                            <div class="upsell-v2-checkout-popup-product-image small-3">
+                            <div class="upsell-v2-checkout-popup-product-image small-3 w-25">
                                 <img id="upsell-v2-checkout-popup-product-image-<?php echo $prod_id; ?>" class="upsell-v2-checkout-popup-product-image-actual" src="" />
                             </div>
 

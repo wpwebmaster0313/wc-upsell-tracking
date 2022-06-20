@@ -56,7 +56,7 @@ function upsell_v2_checkout_popup_render_simple_prod($prod_id, $tracking_id, $pr
                         <div class="row">
 
                             <!-- product image -->
-                            <div class="upsell-v2-checkout-popup-product-image small-3">
+                            <div class="upsell-v2-checkout-popup-product-image small-3 w-25">
                                 <img class="upsell-v2-checkout-popup-product-image-actual" src="<?php echo $img_url[ 0 ]; ?>" alt="<?php echo $product->get_title(); ?>"/>
                             </div>
 

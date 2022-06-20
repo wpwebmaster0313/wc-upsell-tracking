@@ -95,7 +95,7 @@ function upsell_v2_product_single_upsell_display_variable($upsell_id)
                     <td class="upsell-v2-product-upsell-nested-table-td" colspan="2" style="border: none;">
                         <table class="upsell-v2-product-upsell-inner-table">
                             <tbody>
-                                <tr style="border: none;">
+                                <!-- <tr style="border: none;"> -->
 
                                     <?php
                                     // retrieve attributes
@@ -104,60 +104,62 @@ function upsell_v2_product_single_upsell_display_variable($upsell_id)
                                     // loop to display dropdown options
                                     foreach ($attributes as $attr_name => $options) :
                                     ?>
-                                        <!-- variation select label -->
-                                        <td class="upsell-v2-product-upsell-label" style="border: none;">
-                                            <label for="upsell-v2-product-upsell-variable-product-variation-select">
-                                                <?php echo wc_attribute_label($attr_name); ?>
-                                            </label>
-                                        </td>
+                                        <tr style="border: none;">
+                                            <!-- variation select label -->
+                                            <td class="upsell-v2-product-upsell-label" style="border: none;">
+                                                <label for="upsell-v2-product-upsell-variable-product-variation-select">
+                                                    <?php echo wc_attribute_label($attr_name); ?>
+                                                </label>
+                                            </td>
 
-                                        <!-- variation dropdown -->
-                                        <td class="upsell-v2-product-upsell-variable-dropdown-cont" style="border: none;">
-                                            <select class="upsell-v2-product-upsell-variable-product-variation-select" data-parent-id="<?php echo $upsell_id; ?>">
-                                                <?php
-                                                $variations_available = array();
-                                                foreach ($product->get_variation_attributes() as $attribute_name => $attribute_options) {
-                                                    foreach ($variations as $variation) {
-                                                        if (isset($variation['attributes']['attribute_' . $attribute_name])) {
-                                                            if ($variation['is_in_stock']) {
-                                                                $variations_available[$attribute_name][] = $variation['attributes']['attribute_' . $attribute_name];
+                                            <!-- variation dropdown -->
+                                            <td class="upsell-v2-product-upsell-variable-dropdown-cont" style="border: none;">
+                                                <select class="upsell-v2-product-upsell-variable-product-variation-select" data-parent-id="<?php echo $upsell_id; ?>">
+                                                    <?php
+                                                    $variations_available = array();
+                                                    foreach ($product->get_variation_attributes() as $attribute_name => $attribute_options) {
+                                                        foreach ($variations as $variation) {
+                                                            if (isset($variation['attributes']['attribute_' . $attribute_name])) {
+                                                                if ($variation['is_in_stock']) {
+                                                                    $variations_available[$attribute_name][] = $variation['attributes']['attribute_' . $attribute_name];
+                                                                }
                                                             }
                                                         }
                                                     }
-                                                }
 
-                                                foreach ($product->get_attributes() as $attribute) :
-                                                    // if is taxonomy
-                                                    if (isset($variations_available[$attribute->get_name()])) :
-                                                        if ($attribute->is_taxonomy()) :
-                                                            foreach ($attribute->get_terms() as $option) :
-                                                                if (in_array($option->slug, $variations_available[$attribute->get_name()])) {
-                                                                    if ($attr_name === $option->taxonomy) {
-                                                ?>
-                                                                        <option value="<?php echo esc_attr($option->slug); ?>">
-                                                                            <?php echo esc_html(apply_filters('woocommerce_variation_option_name', $option->name, $option, $attribute->get_name(), $product)); ?>
-                                                                        </option>
-                                                                    <?php
+                                                    foreach ($product->get_attributes() as $attribute) :
+                                                        // if is taxonomy
+                                                        if (isset($variations_available[$attribute->get_name()])) :
+                                                            if ($attribute->is_taxonomy()) :
+                                                                foreach ($attribute->get_terms() as $option) :
+                                                                    if (in_array($option->slug, $variations_available[$attribute->get_name()])) {
+                                                                        if ($attr_name === $option->taxonomy) {
+                                                    ?>
+                                                                            <option value="<?php echo esc_attr($option->slug); ?>">
+                                                                                <?php echo esc_html(apply_filters('woocommerce_variation_option_name', $option->name, $option, $attribute->get_name(), $product)); ?>
+                                                                            </option>
+                                                                        <?php
+                                                                        }
                                                                     }
-                                                                }
-                                                            endforeach;
-                                                        // if is not taxonomy
-                                                        else :
-                                                            foreach ($attribute->get_options() as $option) :
-                                                                if (wc_attribute_label($attr_name) === $attribute->get_name()) :
-                                                                    ?>
-                                                                    <option value="<?php echo esc_attr($option); ?>">
-                                                                        <?php echo esc_html(apply_filters('woocommerce_variation_option_name', $option, null, $attribute->get_name(), $product)); ?>
-                                                                    </option>
-                                                <?php
-                                                                endif;
-                                                            endforeach;
+                                                                endforeach;
+                                                            // if is not taxonomy
+                                                            else :
+                                                                foreach ($attribute->get_options() as $option) :
+                                                                    if (wc_attribute_label($attr_name) === $attribute->get_name()) :
+                                                                        ?>
+                                                                        <option value="<?php echo esc_attr($option); ?>">
+                                                                            <?php echo esc_html(apply_filters('woocommerce_variation_option_name', $option, null, $attribute->get_name(), $product)); ?>
+                                                                        </option>
+                                                    <?php
+                                                                    endif;
+                                                                endforeach;
+                                                            endif;
                                                         endif;
-                                                    endif;
-                                                endforeach;
-                                                ?>
-                                            </select>
-                                        </td>
+                                                    endforeach;
+                                                    ?>
+                                                </select>
+                                            </td>
+                                        </tr>
                                     <?php
                                     endforeach;
                                     ?>
@@ -182,7 +184,7 @@ function upsell_v2_product_single_upsell_display_variable($upsell_id)
                                             <option value="10">10</option>
                                         </select>
                                     </td>
-                                </tr>
+                                <!-- </tr> -->
                             </tbody>
                         </table>
                     </td>
